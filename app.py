@@ -10,24 +10,30 @@ def home():
 @app.route('/gaz', methods=['GET','POST'])
 def save_gazouille():
 	if request.method == 'POST':
-		print(request.form)
-		dump_to_csv(request.form)
+		if (280 > len(request.form['user-text'])):
+			dump_to_csv(request.form)
 		return redirect(url_for('timeline'))
 		#return "OK"
 	if request.method == 'GET':
 		return render_template('formulaire.html')
 
-@app.route('/timeline', methods=['GET'])
-def timeline():
-	gaz = parse_from_csv()
+@app.route('/timeline', defaults={'user': None}, methods=['GET'])
+@app.route('/timeline/<user>', methods=['GET'])
+def timeline(user):
+	gaz = parse_from_csv(user)
 	return render_template("timeline.html", gaz = gaz)
 
-def parse_from_csv():
+def parse_from_csv(user):
 	gaz = []
 	with open('./gazouilles.csv', 'r') as f:
 		reader = csv.reader(f)
 		for row in reader:
-			gaz.append({"user":row[0], "text":row[1]})
+			if (280 > len(row[1])):
+				if(user != None):
+					if (row[0] == user):
+						gaz.append({"user":row[0], "text":row[1]})
+				else:
+					gaz.append({"user":row[0], "text":row[1]})
 	return gaz
 
 def dump_to_csv(d):
