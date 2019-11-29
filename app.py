@@ -3,6 +3,14 @@ import csv
 
 app = Flask(__name__)
 
+@app.after_request
+def add_header(response):
+    if 'Cache-Control' not in response.headers:
+        response.headers['Cache-Control'] = 'max-age=300'
+	if 'Access-Control-Allow-Origin' not in response.headers:
+		response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
 @app.route('/')
 def home():
     return 'Bienvenue !'
