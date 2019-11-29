@@ -35,7 +35,7 @@ def save_gazouille():
     Function de la route gaz
     '''
     if request.method == 'POST':
-        if len(request.form['user-text']) < 281:
+        if len(request.form['user-text']) < 281 and request.form['user-text'].count('barre') == 0:
             dump_to_csv(request.form)
         return redirect(url_for('timeline'))
         # return "OK"
