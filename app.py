@@ -8,7 +8,7 @@ def add_header(response):
 	if 'Cache-Control' not in response.headers:
 		response.headers['Cache-Control'] = 'max-age=300'
 	if 'Access-Control-Allow-Origin' not in response.headers:
-		response.headers['Access-Control-Allow-Origin'] = '*'
+		response.headers['Access-Control-Allow-Origin'] = 'Sofiane77.eu.pythonanywhere.com'
 	return response
 
 @app.route('/')
