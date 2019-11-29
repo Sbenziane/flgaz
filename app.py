@@ -3,11 +3,11 @@ Main file de l'aplication
 '''
 import csv
 from flask import Flask, request, render_template, redirect, url_for
-#from flask_ipban import IpBan
+from flask_ipban import IpBan
 
 APP_FLASK = Flask(__name__)
-#ip_ban = IpBan(ban_seconds=59)
-#ip_ban.init_app(APP_FLASK)
+ip_ban = IpBan(ban_seconds=59)
+ip_ban.init_app(APP_FLASK)
 
 @APP_FLASK.after_request
 def add_header(response):
