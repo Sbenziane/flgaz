@@ -9,6 +9,6 @@ Jinja2==2.11.3
 MarkupSafe==1.1.1
 pylint==2.4.4
 PyYAML==5.1.2
-requests==2.22.0
+requests==2.31.0
 urllib3==1.25.7
 Werkzeug==0.16.0
