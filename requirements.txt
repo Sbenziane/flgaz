@@ -11,4 +11,4 @@ pylint==2.4.4
 PyYAML==5.1.2
 requests==2.22.0
 urllib3==1.25.7
-Werkzeug==0.16.0
+Werkzeug==3.0.1
